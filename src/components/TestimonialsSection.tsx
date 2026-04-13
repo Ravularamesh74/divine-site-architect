@@ -27,6 +27,30 @@ const testimonials = [
     role: "CEO",
     initials: "OP",
   },
+  {
+    quote: "MaplePeak found us the perfect operations manager within two weeks. Their understanding of our industry and culture made all the difference in our hiring success.",
+    name: "Marcus Thompson",
+    role: "Hiring Manager, Manufacturing Firm, Detroit",
+    initials: "MT",
+  },
+  {
+    quote: "Impressed by how quickly MaplePeak responded to our staffing needs. They brought professionalism and genuine care to the entire placement process. Highly recommend.",
+    name: "Rebecca Chen",
+    role: "HR Manager, Financial Services, Toronto",
+    initials: "RC",
+  },
+  {
+    quote: "What set MaplePeak apart was their attention to detail and follow-up. They didn't just place a candidate and disappear. They ensured the fit was right for both sides.",
+    name: "David Kowalski",
+    role: "Owner, Construction Management, Toronto",
+    initials: "DK",
+  },
+  {
+    quote: "Their reach across Canada and the US helped us fill positions in multiple locations. Consistent quality and smooth coordination made the entire process seamless.",
+    name: "Sarah Patel",
+    role: "Founder, Professional Services Startup",
+    initials: "SP",
+  },
 ];
 
 export default function TestimonialsSection() {
@@ -43,8 +67,11 @@ export default function TestimonialsSection() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-primary text-sm font-semibold uppercase tracking-widest">Client Success</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mt-4">
-            Trusted by <span className="text-gradient-gold">leading companies</span>
+            Trusted by <span className="text-gradient-gold">leading companies</span> across North America
           </h2>
+          <p className="text-muted-foreground mt-4 text-lg">
+            See how MaplePeak Staffing has helped businesses find the right talent and build stronger teams.
+          </p>
         </div>
 
         <div className={`max-w-4xl mx-auto opacity-0 ${isVisible ? "animate-fade-up" : ""}`}>
