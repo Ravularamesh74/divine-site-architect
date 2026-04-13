@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div className="lg:col-span-2">
             <a href="#home" className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="MaplePeak" className="h-8 w-8" />
+              <img src={logo} alt="MaplePeak" className="h-10 w-10 rounded-full object-cover border-2 border-primary/30" />
               <span className="text-lg font-display font-bold text-gradient-gold">MaplePeak Staffing</span>
             </a>
             <p className="text-muted-foreground text-sm max-w-sm leading-relaxed">

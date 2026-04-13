@@ -29,7 +29,7 @@ export default function Navbar() {
     >
       <div className="container flex items-center justify-between">
         <a href="#home" className="flex items-center gap-3 group">
-          <img src={logo} alt="MaplePeak" className="h-10 w-10 transition-transform duration-300 group-hover:scale-110" />
+          <img src={logo} alt="MaplePeak" className="h-12 w-12 rounded-full object-cover border-2 border-primary/30 transition-transform duration-300 group-hover:scale-110" />
           <span className="text-xl font-display font-bold text-gradient-gold">MaplePeak</span>
         </a>
 
