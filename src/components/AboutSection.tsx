@@ -25,29 +25,45 @@ const values = [
   },
 ];
 
+const team = [
+  {
+    name: "Om Prakash Yedla",
+    role: "Founder and Principal Recruiter",
+    desc: "Om leads MaplePeak Staffing with a vision to connect top talent with the right opportunities across North America. His strategic approach ensures every placement drives real value for clients and candidates.",
+    initials: "OY",
+  },
+  {
+    name: "Jessica Chen",
+    role: "Senior Recruitment Specialist",
+    desc: "Jessica brings expertise in talent acquisition and candidate relations. She works directly with clients to understand staffing needs and sources qualified professionals throughout Canada and the United States.",
+    initials: "JC",
+  },
+];
+
 export default function AboutSection() {
   const { ref, isVisible } = useScrollReveal();
   const { ref: valuesRef, isVisible: valuesVisible } = useScrollReveal();
+  const { ref: teamRef, isVisible: teamVisible } = useScrollReveal();
 
   return (
-    <section className="py-24 relative">
+    <section id="about" className="py-24 relative">
       <div className="section-divider w-full mb-24" />
       <div className="container">
         {/* About intro */}
         <div ref={ref} className="grid lg:grid-cols-2 gap-12 items-center mb-24">
           <div className={`opacity-0 ${isVisible ? "animate-fade-up" : ""}`}>
-            <span className="text-primary text-sm font-semibold uppercase tracking-widest">About Us</span>
+            <span className="text-primary text-sm font-semibold uppercase tracking-widest">Our Foundation</span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mt-4">
-              Built on <span className="text-gradient-gold">expertise</span>, driven by results
+              Building North American staffing <span className="text-gradient-gold">from the ground up</span>
             </h2>
             <p className="text-muted-foreground mt-6 leading-relaxed text-lg">
-              MaplePeak Staffing was founded with a simple mission: connect exceptional talent with organizations that need them most. Based in North America, we've grown into a trusted staffing partner for companies across Canada and the United States.
+              MaplePeak Staffing launched with a clear mission: connect skilled talent with organizations across Canada and the United States that need reliable, qualified professionals. We started in Toronto and are committed to understanding the staffing challenges businesses face in today's market.
             </p>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Our approach combines deep industry expertise with a personal touch. We don't just match resumes to job descriptions — we understand the unique dynamics of your team, your company culture, and your long-term vision. This allows us to deliver placements that don't just fill a position but strengthen your entire organization.
             </p>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Led by founder Om Prakash Yedla, our dedicated team brings years of cross-border recruitment experience, serving industries from technology and finance to healthcare and manufacturing.
+              Whether you need permanent placements, temporary staff, or contract workers, we connect you with qualified candidates tailored to your specific business needs across multiple industries throughout North America.
             </p>
           </div>
           <div className={`opacity-0 ${isVisible ? "animate-slide-in-right" : ""}`}>
@@ -59,6 +75,38 @@ export default function AboutSection() {
                 className="w-full h-80 lg:h-[420px] object-cover"
               />
             </div>
+          </div>
+        </div>
+
+        {/* Leadership */}
+        <div ref={teamRef} className="mb-24">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className={`text-primary text-sm font-semibold uppercase tracking-widest opacity-0 ${teamVisible ? "animate-fade-up" : ""}`}>
+              Leadership Team
+            </span>
+            <h2 className={`text-3xl sm:text-4xl font-display font-bold mt-4 opacity-0 ${teamVisible ? "animate-fade-up stagger-1" : ""}`}>
+              Meet the team driving <span className="text-gradient-gold">your success</span>
+            </h2>
+            <p className={`text-muted-foreground mt-4 opacity-0 ${teamVisible ? "animate-fade-up stagger-2" : ""}`}>
+              Our dedicated professionals combine deep recruitment expertise with a commitment to matching you with the right talent.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {team.map((member, i) => (
+              <div
+                key={member.name}
+                className={`glass-card-hover rounded-xl p-8 text-center opacity-0 ${teamVisible ? "animate-fade-up" : ""}`}
+                style={{ animationDelay: `${(i + 3) * 0.1}s` }}
+              >
+                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
+                  <span className="text-primary text-2xl font-bold">{member.initials}</span>
+                </div>
+                <h3 className="text-lg font-semibold">{member.name}</h3>
+                <p className="text-sm text-primary font-medium mt-1">{member.role}</p>
+                <p className="text-sm text-muted-foreground mt-4 leading-relaxed">{member.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
 

@@ -3,10 +3,10 @@ import { useCountUp } from "@/hooks/use-count-up";
 import teamImage from "@/assets/team-collab.jpg";
 
 const stats = [
-  { value: 2, suffix: "", label: "Countries Served", desc: "Staffing across Canada and the United States" },
-  { value: 1, suffix: "", label: "Dedicated Specialist", desc: "Personalized attention from Om Prakash Yedla" },
-  { value: 100, suffix: "%", label: "Focus on Quality", desc: "Every placement reflects premium standards" },
-  { value: 24, suffix: "h", label: "Response Time", desc: "Fast, professional communication guaranteed" },
+  { value: 50, suffix: "+", label: "Placements Completed", desc: "Successful matches connecting qualified candidates with employers seeking talent." },
+  { value: 95, suffix: "%", label: "Client Satisfaction", desc: "Employers and candidates rate their MaplePeak experience highly for professionalism and results." },
+  { value: 2, suffix: "", label: "Countries Served", desc: "We recruit and place talent throughout Canada and the United States with local expertise." },
+  { value: 14, suffix: "", label: "Days Avg. Placement", desc: "Fast, efficient matching that gets qualified candidates into roles quickly." },
 ];
 
 function StatCard({ stat, visible, delay }: { stat: typeof stats[0]; visible: boolean; delay: number }) {
@@ -30,14 +30,17 @@ export default function StatsSection() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="about" className="py-24 relative">
+    <section className="py-24 relative">
       <div className="section-divider w-full mb-24" />
       <div className="container" ref={ref}>
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-primary text-sm font-semibold uppercase tracking-widest">Our Track Record</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mt-4">
-            Proven <span className="text-gradient-gold">expertise</span> delivering results
+            Proven <span className="text-gradient-gold">results</span> in staffing excellence
           </h2>
+          <p className="text-muted-foreground mt-4 text-lg">
+            MaplePeak Staffing delivers measurable outcomes for employers and candidates across Canada and the United States.
+          </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
