@@ -81,11 +81,12 @@ It connects **top talent with organizations across Canada and the United States*
 ---
 
 ## 📂 Project Structure
+
+```bash
 src/
-│
-├── app/                         # 🧠 Routing layer (entry point)
-│   ├── layout.tsx               # Global layout (Navbar, Footer)
-│   ├── page.tsx                 # Home page
+├── app/                         # Routing layer (entry point)
+│   ├── layout.tsx               # Global layout
+│   ├── page.tsx                 # Home
 │   ├── about/
 │   │   └── page.tsx
 │   ├── services/
@@ -98,81 +99,25 @@ src/
 │   │   └── page.tsx
 │   └── not-found.tsx
 │
-├── components/                  # 🎨 Reusable UI system
-│   ├── ui/                      # Core design system
-│   │   ├── button.tsx
-│   │   ├── input.tsx
-│   │   ├── card.tsx
-│   │   └── badge.tsx
-│   │
-│   ├── layout/                  # Layout components
-│   │   ├── navbar.tsx
-│   │   └── footer.tsx
-│   │
-│   ├── sections/                # Page sections
-│   │   ├── hero.tsx
-│   │   ├── about.tsx
-│   │   ├── services.tsx
-│   │   ├── process.tsx
-│   │   ├── stats.tsx
-│   │   ├── testimonials.tsx
-│   │   ├── faq.tsx
-│   │   └── cta.tsx
-│   │
-│   └── common/                  # Shared components
-│       ├── container.tsx
-│       ├── section-title.tsx
-│       └── animated-card.tsx
+├── components/
+│   ├── ui/
+│   ├── layout/
+│   ├── sections/
+│   └── common/
 │
-├── features/                    # 🧠 Business logic (IMPORTANT)
+├── features/
 │   ├── faq/
-│   │   ├── FAQSection.tsx
-│   │   ├── faq-data.ts
-│   │   └── faq-types.ts
-│   │
 │   ├── pricing/
-│   │   ├── PricingCard.tsx
-│   │   └── pricing-data.ts
-│   │
 │   ├── testimonials/
-│   │   ├── TestimonialsCarousel.tsx
-│   │   └── testimonials-data.ts
-│   │
 │   ├── contact/
-│   │   ├── ContactForm.tsx
-│   │   └── contact-service.ts
-│   │
 │   └── services/
-│       ├── ServicesGrid.tsx
-│       └── services-data.ts
 │
-├── hooks/                       # ⚡ Custom hooks
-│   ├── use-scroll-reveal.ts
-│   ├── use-count-up.ts
-│   ├── use-debounce.ts
-│   └── use-toggle.ts
-│
-├── lib/                         # 🧩 Utilities & core logic
-│   ├── utils.ts                 # cn(), helpers
-│   ├── constants.ts             # global constants
-│   ├── animations.ts            # motion configs
-│   └── config.ts                # app config
-│
-├── styles/                      # 🎨 Global styles
-│   └── globals.css
-│
-├── assets/                      # 🖼️ Static assets
-│   ├── images/
-│   ├── icons/
-│   └── logos/
-│
-├── types/                       # 📘 TypeScript types
-│   ├── global.d.ts
-│   ├── faq.ts
-│   ├── user.ts
-│   └── api.ts
-│
-└── main.tsx                     # Entry point (Vite)
+├── hooks/
+├── lib/
+├── styles/
+├── assets/
+├── types/
+└── main.tsx
 
 
 ---
