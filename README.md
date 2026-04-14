@@ -84,14 +84,23 @@ It connects **top talent with organizations across Canada and the United States*
 
 src/
 ├── app/ # Routing layer
+
 ├── components/ # UI system
+
 │ ├── ui/
+
 │ ├── layout/
+
 │ └── sections/
+
 ├── features/ # Feature modules
+
 ├── hooks/ # Custom hooks
+
 ├── lib/ # Utilities & animations
+
 ├── assets/ # Images
+
 └── types/ # Type definitions
 
 
