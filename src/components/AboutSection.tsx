@@ -1,6 +1,7 @@
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Users, Award, Clock, MapPin } from "lucide-react";
 import aboutTeamImg from "@/assets/about-team.jpg";
+import omImg from "@/assets/om.jpeg";
 
 const values = [
   {
@@ -29,6 +30,7 @@ const team = [
   {
     name: "Om Prakash Yedla",
     role: "Founder and Principal Recruiter",
+    img: "omImg",
     desc: "Om leads MaplePeak Staffing with a vision to connect top talent with the right opportunities across North America. His strategic approach ensures every placement drives real value for clients and candidates.",
     initials: "OY",
   },

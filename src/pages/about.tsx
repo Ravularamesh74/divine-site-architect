@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import omImage from "@/assets/om.jpeg";
 import aboutTeamImage from "@/assets/about-team.jpg";
 
+
 // ==============================
 // 🔹 ANIMATION
 // ==============================
@@ -54,7 +55,7 @@ const team = [
     name: "Jessica Chen",
     role: "Senior Recruiter",
     initials: "JC",
-    image: "",
+    image: "https://images.unsplash.com/photo-1637855192324-54a17785d1ae?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fEplc3NpY2ElMjBJTiUyME9GRklDRXxlbnwwfHwwfHx8MA%3D%3D",
     description: "Jessica Chen is a Senior Recruiter at MaplePeak Staffing, bringing extensive experience in talent acquisition and team building. She specializes in understanding client needs and delivering high-quality placements across North America. Her approach focuses on precision, speed, and building long-term relationships. Jessica is dedicated to helping businesses find the right people to achieve their goals." ,
     linkedin: "https://www.linkedin.com/in/jessicachen/",
   },
@@ -122,6 +123,10 @@ function TeamMemberCard({ member }: { member: any }) {
 // 🔹 COMPONENT
 // ==============================
 export default function AboutPage() {
+  const [missionExpanded, setMissionExpanded] = useState(false);
+  const missionText = "We deliver high-quality staffing solutions built around a deep understanding of each client’s unique goals. We connect organizations with exceptional talent that drives innovation, performance, and long-term growth. Every hire is guided by precision, combining industry insight with advanced sourcing strategies. We move fast—without compromising on quality—helping businesses scale with confidence. Our relationships are built on trust, transparency, and long-term value. We continuously evolve with the market to deliver agile, future-ready hiring solutions. Through thoughtful engagement, we create meaningful experiences for both clients and candidates. We focus on lasting impact—not just placements, but sustainable workforce growth. Our ambition is simple: to be the partner behind every high-performing team.";
+  const truncatedMission = "We deliver high-quality staffing solutions built around a deep understanding of each client’s unique goals. We connect organizations with exceptional talent that drives innovation, performance, and long-term growth.";
+
   return (
     <main className="py-24">
 
@@ -152,11 +157,17 @@ export default function AboutPage() {
             Our Mission
           </h2>
 
-          <p className="text-muted-foreground leading-relaxed">
-            Our mission is to deliver high-quality staffing solutions by
-            understanding each client’s unique needs. We focus on building
-            long-term partnerships through trust, speed, and precision.
-          </p>
+          <div className="text-muted-foreground leading-relaxed">
+            <p>
+              {missionExpanded ? missionText : truncatedMission}
+              <button
+                onClick={() => setMissionExpanded(!missionExpanded)}
+                className="text-primary font-semibold hover:underline inline-block ml-2 cursor-pointer"
+              >
+                {missionExpanded ? "Read less" : "Read more"}
+              </button>
+            </p>
+          </div>
         </motion.div>
 
         <motion.div
@@ -215,30 +226,124 @@ export default function AboutPage() {
       </section>
 
       {/* ================= MAP ================= */}
-      <section className="container text-center mb-24">
-        <h2 className="text-3xl font-bold mb-6">
-          Where to find us
-        </h2>
-        <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">
-          We operate across North America with strong connections in major business hubs.
-        </p>
+     <section className="container text-center mb-24">
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 h-[450px] w-full"
-        >
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.435749419192!2d-79.38971208450204!3d43.64955357912166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34d2a33d602f%3A0x15923de1f8d4e92!2sToronto%20Financial%20District%2C%20Toronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
+  {/* 🔹 HEADER */}
+  <h2 className="text-3xl font-bold mb-6">
+    Global Presence
+  </h2>
+
+  <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">
+    We operate across key global markets, connecting businesses with top-tier talent through strong regional expertise.
+  </p>
+
+  {/* 🔥 REGION CARDS */}
+  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    {[
+      {
+        region: "North America",
+        image: "https://images.unsplash.com/photo-1546083381-2bed38b42cac?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        desc: "Strong network across US & Canada with deep hiring expertise.",
+        tag: "Primary Market",
+      },
+      {
+        region: "Europe",
+        image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=800&q=80",
+        desc: "Access to diverse and highly skilled talent pools across the continent.",
+        tag: "Expanding",
+      },
+      {
+        region: "Asia-Pacific",
+        image: "https://images.unsplash.com/photo-1531421389064-2100a1b71999?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        desc: "Fast-growing region with scalable hiring solutions for tech and operations.",
+        tag: "Emerging",
+      },
+    ].map((item, i) => (
+      <div
+        key={i}
+        className="group relative rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-primary/30 transition overflow-hidden flex flex-col"
+      >
+        {/* 🔥 IMAGE CONTAINER */}
+        <div className="h-48 w-full overflow-hidden">
+          <img 
+            src={item.image} 
+            alt={item.region} 
+            className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
           />
-        </motion.div>
-      </section>
+        </div>
+
+        {/* 🔥 CONTENT */}
+        <div className="p-6 relative">
+          {/* 🔥 GLOW */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-primary/5 to-transparent blur-xl transition" />
+
+          <h3 className="font-semibold text-xl">{item.region}</h3>
+          <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+            {item.desc}
+          </p>
+
+          <span className="inline-block mt-4 text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">
+            {item.tag}
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* 🔥 STATS (CREDIBILITY BOOST) */}
+  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+
+    {[
+      { value: "500+", label: "Successful Placements" },
+      { value: "120+", label: "Global Clients" },
+      { value: "95%", label: "Retention Rate" },
+      { value: "48h", label: "Avg. Response Time" },
+    ].map((stat, i) => (
+      <div
+        key={i}
+        className="p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl"
+      >
+        <h3 className="text-2xl font-bold text-primary">
+          {stat.value}
+        </h3>
+        <p className="text-sm text-muted-foreground mt-1">
+          {stat.label}
+        </p>
+      </div>
+    ))}
+  </div>
+
+  {/* 🔥 CONTACT STRIP */}
+  <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-white/5 to-white/10 border border-white/10 backdrop-blur-xl flex flex-col lg:flex-row items-center justify-between gap-6">
+
+    <div className="text-left">
+      <h3 className="text-xl font-semibold">
+        Let’s build your team globally
+      </h3>
+      <p className="text-sm text-muted-foreground mt-1">
+        Reach out to our team for tailored hiring solutions.
+      </p>
+    </div>
+
+    <div className="flex gap-4">
+      <a
+        href="mailto:info@hirexpert.com"
+        className="px-6 py-3 bg-primary text-white rounded-lg"
+      >
+        Email Us
+      </a>
+
+      <a
+        href="/contact"
+        className="px-6 py-3 border border-white/20 rounded-lg hover:bg-white/5 transition"
+      >
+        Contact Page
+      </a>
+    </div>
+  </div>
+
+</section>
 
       {/* ================= CTA ================= */}
       <section className="container text-center">
@@ -267,3 +372,5 @@ export default function AboutPage() {
     </main>
   );
 }
+
+
