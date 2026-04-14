@@ -171,6 +171,33 @@ export default function ContactPage() {
         </motion.div>
 
       </section>
+
+      {/* ================= MAP ================= */}
+      <section className="container mt-20 mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-2xl font-bold text-center mb-8">
+            Our Location
+          </h2>
+
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 h-[400px] w-full">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.435749419192!2d-79.38971208450204!3d43.64955357912166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34d2a33d602f%3A0x15923de1f8d4e92!2sToronto%20Financial%20District%2C%20Toronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="MaplePeak Staffing Location"
+            />
+          </div>
+        </motion.div>
+      </section>
+
     </main>
   );
 }
