@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Target,
@@ -8,16 +8,18 @@ import {
   Globe,
   HeadphonesIcon,
 } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 // ==============================
 // 🔹 ANIMATION
 // ==============================
-const container = {
+const container: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.15 } },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 40 },
   show: { opacity: 1, y: 0 },
 };
@@ -65,7 +67,9 @@ const services = [
 // ==============================
 export default function ServicesPage() {
   return (
-    <main className="relative py-24 overflow-hidden">
+    <>
+      <Navbar />
+      <main className="relative py-24 overflow-hidden">
 
       {/* 🔥 BACKGROUND EFFECTS */}
       <div className="absolute inset-0 -z-10 bg-[url('/grid.svg')] opacity-20" />
@@ -252,7 +256,9 @@ export default function ServicesPage() {
           </Link>
         </motion.div>
       </section>
-
     </main>
+
+      <Footer />
+    </>
   );
 }

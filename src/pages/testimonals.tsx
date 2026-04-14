@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 // ==============================
 // 🔹 DATA
@@ -73,7 +75,9 @@ export default function TestimonialsPage() {
   }, [index]);
 
   return (
-    <main className="py-24">
+    <>
+      <Navbar />
+      <main className="py-24">
 
       {/* ================= HERO ================= */}
       <section className="container text-center max-w-3xl mx-auto mb-20">
@@ -211,7 +215,9 @@ export default function TestimonialsPage() {
           </Link>
         </motion.div>
       </section>
-
     </main>
+
+      <Footer />
+    </>
   );
 }

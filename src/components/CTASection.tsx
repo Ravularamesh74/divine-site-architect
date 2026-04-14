@@ -37,7 +37,7 @@ export default function CTASection() {
               </a>
             </Button>
             <Button variant="outline" size="lg" className="w-full sm:w-auto text-base font-semibold h-14 px-8 rounded-full border-white/20 text-white bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all" asChild>
-              <a href="mailto:[EMAIL_ADDRESS]">
+              <a href="mailto:contact@maplepeak.com">
                 Send an inquiry
               </a>
             </Button>

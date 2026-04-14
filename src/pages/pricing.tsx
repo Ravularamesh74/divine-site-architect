@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Check } from "lucide-react";
 import { Link } from "react-router-dom";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 // ==============================
 // 🔹 DATA
@@ -46,12 +48,12 @@ const plans = [
 // ==============================
 // 🔹 ANIMATION
 // ==============================
-const container = {
+const container: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.15 } },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 40 },
   show: { opacity: 1, y: 0 },
 };
@@ -61,7 +63,9 @@ const item = {
 // ==============================
 export default function PricingPage() {
   return (
-    <main className="py-24">
+    <>
+      <Navbar />
+      <main className="py-24">
 
       {/* ================= HERO ================= */}
       <section className="container text-center max-w-2xl mx-auto mb-20">
@@ -406,8 +410,9 @@ export default function PricingPage() {
     </a>
   </div>
 
-</section>
-
-    </main>
+    </section>
+  </main>
+      <Footer />
+    </>
   );
 }

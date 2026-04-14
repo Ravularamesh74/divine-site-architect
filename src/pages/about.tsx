@@ -6,6 +6,8 @@ import { Users, Target, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import omImage from "@/assets/om.jpeg";
 import aboutTeamImage from "@/assets/about-team.jpg";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 
 // ==============================
@@ -128,7 +130,9 @@ export default function AboutPage() {
   const truncatedMission = "We deliver high-quality staffing solutions built around a deep understanding of each client’s unique goals. We connect organizations with exceptional talent that drives innovation, performance, and long-term growth.";
 
   return (
-    <main className="py-24">
+    <>
+      <Navbar />
+      <main className="py-24">
 
       {/* ================= HERO ================= */}
       <section className="container text-center max-w-3xl mx-auto mb-20">
@@ -368,8 +372,10 @@ export default function AboutPage() {
           </Link>
         </motion.div>
       </section>
-
     </main>
+
+      <Footer />
+    </>
   );
 }
 
