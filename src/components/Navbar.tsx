@@ -3,13 +3,15 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
+import { Link } from "react-router-dom";
+
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Testimonials", href: "/testimonials" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -29,26 +31,26 @@ export default function Navbar() {
       }`}
     >
       <div className="container flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <img src={logo} alt="MaplePeak" className="h-12 w-12 rounded-full object-cover border-2 border-primary/30 transition-transform duration-300 group-hover:scale-110" />
           <span className="text-xl font-display font-bold text-gradient-gold">MaplePeak</span>
-        </a>
+        </Link>
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         <div className="hidden md:block">
           <Button variant="hero" size="lg" asChild>
-            <a href="#contact">Start Hiring</a>
+            <Link to="/contact">Start Hiring</Link>
           </Button>
         </div>
 
@@ -64,17 +66,17 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden glass-card mt-2 mx-4 rounded-lg p-6 animate-fade-up">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
               onClick={() => setOpen(false)}
               className="block py-3 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <Button variant="hero" className="w-full mt-4" asChild>
-            <a href="#contact">Start Hiring</a>
+            <Link to="/contact">Start Hiring</Link>
           </Button>
         </div>
       )}

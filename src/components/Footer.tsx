@@ -1,4 +1,5 @@
 import logo from "@/assets/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -6,10 +7,10 @@ export default function Footer() {
       <div className="container">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div className="lg:col-span-2">
-            <a href="#home" className="flex items-center gap-3 mb-4">
+            <Link to="/" className="flex items-center gap-3 mb-4">
               <img src={logo} alt="MaplePeak" className="h-10 w-10 rounded-full object-cover border-2 border-primary/30" />
               <span className="text-lg font-display font-bold text-gradient-gold">MaplePeak Staffing</span>
-            </a>
+            </Link>
             <p className="text-muted-foreground text-sm max-w-sm leading-relaxed">
               Premium staffing solutions connecting top talent with organizations across Canada and the United States.
             </p>
@@ -19,13 +20,13 @@ export default function Footer() {
             <h4 className="font-semibold mb-4 text-sm">Quick Links</h4>
             <div className="space-y-3">
               {["Home", "Services", "About", "Testimonials", "Contact"].map((l) => (
-                <a
+                <Link
                   key={l}
-                  href={`#${l.toLowerCase()}`}
+                  to={l === "Home" ? "/" : `/${l.toLowerCase()}`}
                   className="block text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {l}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -33,8 +34,8 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4 text-sm">Contact</h4>
             <div className="space-y-3 text-sm text-muted-foreground">
-              <a href="tel:+12345678900" className="block hover:text-primary transition-colors">+1 234 567 8900</a>
-              <a href="mailto:email@mybusiness.com" className="block hover:text-primary transition-colors">email@mybusiness.com</a>
+              <a href="tel:+916309503257" className="block hover:text-primary transition-colors">+91 6309503257</a>
+              <a href="mailto:[EMAIL_ADDRESS]" className="block hover:text-primary transition-colors">[EMAIL_ADDRESS]</a>
               <p>Canada & United States</p>
             </div>
           </div>

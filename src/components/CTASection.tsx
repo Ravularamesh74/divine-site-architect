@@ -1,42 +1,48 @@
 import { ArrowRight, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import ctaBg from "@/assets/handshake-cta.png";
 
 export default function CTASection() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="contact" className="py-24 relative">
-      <div className="section-divider w-full mb-24" />
-      <div className="container" ref={ref}>
-        <div className={`glass-card rounded-2xl p-8 sm:p-16 text-center max-w-4xl mx-auto relative overflow-hidden opacity-0 ${isVisible ? "animate-fade-up" : ""}`}>
-          {/* Glow effect */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2" />
-          
-          <div className="relative z-10">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
-              Let's find your next <span className="text-gradient-gold">great hire</span>
-            </h2>
-            <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
-              Connect with MaplePeak Staffing today. We'll match you with qualified talent across Canada and the United States.
-            </p>
+    <section id="contact" className="relative py-32 overflow-hidden mt-24">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={ctaBg}
+          alt="Business professionals shaking hands"
+          className="w-full h-full object-cover"
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/60" /> 
+      </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="hero" size="lg" className="group" asChild>
-                <a href="tel:+12345678900">
-                  <Phone size={18} className="mr-2" />
-                  Call +1 234 567 8900
-                  <ArrowRight className="ml-1 transition-transform group-hover:translate-x-1" size={16} />
-                </a>
-              </Button>
-              <Button variant="heroOutline" size="lg" asChild>
-                <a href="mailto:email@mybusiness.com">
-                  <Mail size={18} className="mr-2" />
-                  Email Us
-                </a>
-              </Button>
-            </div>
+      <div className="container relative z-10" ref={ref}>
+        <div className={`text-center max-w-4xl mx-auto opacity-0 ${isVisible ? "animate-fade-up" : ""}`}>
+          
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold mb-6 text-white leading-[1.1]">
+            Let's find your next<br className="hidden sm:block" /> opportunity
+          </h2>
+          
+          <p className="text-white/80 text-lg sm:text-xl mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
+            Connect with MaplePeak Staffing today. Call +91 6309503257 or email email@mybusiness.com to discuss your staffing needs or explore career options.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <Button size="lg" className="w-full sm:w-auto text-base font-semibold h-14 px-8 rounded-full bg-white text-black hover:bg-neutral-200 transition-all border-0" asChild>
+              <a href="tel:+916309503257">
+                Call us now
+              </a>
+            </Button>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto text-base font-semibold h-14 px-8 rounded-full border-white/20 text-white bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all" asChild>
+              <a href="mailto:[EMAIL_ADDRESS]">
+                Send an inquiry
+              </a>
+            </Button>
           </div>
+
         </div>
       </div>
     </section>

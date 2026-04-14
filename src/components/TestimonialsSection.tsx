@@ -1,130 +1,174 @@
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+"use client";
 
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+// ==============================
+// 🔹 DATA
+// ==============================
 const testimonials = [
   {
-    quote: "MaplePeak Staffing found us the right candidate in just two weeks. The quality of placement was exceptional, and the entire process was seamless from start to finish.",
+    quote: "MaplePeak found the right candidate in just two weeks.",
     name: "Jennifer Walsh",
-    role: "HR Manager, Toronto-based Tech Firm",
+    role: "HR Manager",
     initials: "JW",
   },
   {
-    quote: "We needed specialized talent fast, and MaplePeak delivered. Their understanding of our industry needs and attention to cultural fit made all the difference in our hiring success.",
+    quote: "Fast, professional, and highly reliable staffing partner.",
     name: "Wassem Akram",
     role: "Operations Director",
     initials: "WA",
   },
   {
-    quote: "The level of professionalism and follow-up from MaplePeak Staffing set them apart. They didn't just fill a position; they helped us build a stronger team.",
+    quote: "They helped us build a stronger team, not just fill roles.",
     name: "Lakshmi Methri",
     role: "Recruiting Manager",
     initials: "LM",
   },
   {
-    quote: "As a growing company, we needed staffing partners we could rely on. MaplePeak Staffing has been consistent, responsive, and focused on finding the right fit every single time.",
-    name: "Om Prakash Yedla",
-    role: "CEO",
-    initials: "OP",
+    quote: "MaplePeak found the right candidate in just two weeks.",
+    name: "Sarah Wilson",
+    role: "HR Manager",
+    initials: "SW",
   },
   {
-    quote: "MaplePeak found us the perfect operations manager within two weeks. Their understanding of our industry and culture made all the difference in our hiring success.",
-    name: "Marcus Thompson",
-    role: "Hiring Manager, Manufacturing Firm, Detroit",
-    initials: "MT",
+    quote: "Fast, professional, and highly reliable staffing partner.",
+    name: "Jane Smith",
+    role: "Operations Director",
+    initials: "JS",
   },
   {
-    quote: "Impressed by how quickly MaplePeak responded to our staffing needs. They brought professionalism and genuine care to the entire placement process. Highly recommend.",
-    name: "Rebecca Chen",
-    role: "HR Manager, Financial Services, Toronto",
-    initials: "RC",
-  },
-  {
-    quote: "What set MaplePeak apart was their attention to detail and follow-up. They didn't just place a candidate and disappear. They ensured the fit was right for both sides.",
-    name: "David Kowalski",
-    role: "Owner, Construction Management, Toronto",
-    initials: "DK",
-  },
-  {
-    quote: "Their reach across Canada and the US helped us fill positions in multiple locations. Consistent quality and smooth coordination made the entire process seamless.",
-    name: "Sarah Patel",
-    role: "Founder, Professional Services Startup",
-    initials: "SP",
+    quote: "They helped us build a stronger team, not just fill roles.",
+    name: "John Doe",
+    role: "Recruiting Manager",
+    initials: "JD",
   },
 ];
 
-export default function TestimonialsSection() {
-  const [active, setActive] = useState(0);
-  const { ref, isVisible } = useScrollReveal();
+// ==============================
+// 🔹 ANIMATION
+// ==============================
+const variants = {
+  enter: (dir: number) => ({
+    x: dir > 0 ? 300 : -300,
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (dir: number) => ({
+    x: dir < 0 ? 300 : -300,
+    opacity: 0,
+  }),
+};
 
-  const next = () => setActive((p) => (p + 1) % testimonials.length);
-  const prev = () => setActive((p) => (p - 1 + testimonials.length) % testimonials.length);
+// ==============================
+// 🔹 COMPONENT
+// ==============================
+export default function TestimonialsSection() {
+  const [[index, direction], setIndex] = useState([0, 0]);
+
+  // 🔥 Auto-play
+  useEffect(() => {
+    const interval = setInterval(() => {
+      paginate(1);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [index]);
+
+  const paginate = (dir: number) => {
+    setIndex([
+      (index + dir + testimonials.length) % testimonials.length,
+      dir,
+    ]);
+  };
 
   return (
-    <section id="testimonials" className="py-24 relative">
-      <div className="section-divider w-full mb-24" />
-      <div className="container" ref={ref}>
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-primary text-sm font-semibold uppercase tracking-widest">Client Success</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mt-4">
-            Trusted by <span className="text-gradient-gold">leading companies</span> across North America
+    <section id="testimonials" className="py-24">
+      <div className="container max-w-4xl mx-auto text-center">
+
+        {/* HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="mb-16"
+        >
+          <h2 className="text-4xl font-bold">
+            Trusted by{" "}
+            <span className="text-gradient-gold">
+              leading companies
+            </span>
           </h2>
-          <p className="text-muted-foreground mt-4 text-lg">
-            See how MaplePeak Staffing has helped businesses find the right talent and build stronger teams.
-          </p>
-        </div>
+        </motion.div>
 
-        <div className={`max-w-4xl mx-auto opacity-0 ${isVisible ? "animate-fade-up" : ""}`}>
-          <div className="glass-card rounded-2xl p-8 sm:p-12 relative">
-            <Quote className="text-primary/20 absolute top-8 left-8" size={48} />
-            
-            <div className="relative z-10">
-              <p className="text-lg sm:text-xl leading-relaxed text-foreground/90 mb-8 min-h-[100px]">
-                "{testimonials[active].quote}"
+        {/* CAROUSEL */}
+        <div className="relative overflow-hidden">
+
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={index}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.5 }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              onDragEnd={(e, { offset }) => {
+                if (offset.x < -100) paginate(1);
+                if (offset.x > 100) paginate(-1);
+              }}
+              className="glass-card rounded-2xl p-10"
+            >
+              <Quote className="mx-auto text-primary/20 mb-4" size={40} />
+
+              <p className="text-lg mb-6">
+                "{testimonials[index].quote}"
               </p>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
-                    {testimonials[active].initials}
-                  </div>
-                  <div>
-                    <div className="font-semibold">{testimonials[active].name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonials[active].role}</div>
-                  </div>
-                </div>
 
-                <div className="flex gap-2">
-                  <button
-                    onClick={prev}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
-                    aria-label="Previous"
-                  >
-                    <ChevronLeft size={18} />
-                  </button>
-                  <button
-                    onClick={next}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
-                    aria-label="Next"
-                  >
-                    <ChevronRight size={18} />
-                  </button>
+              <div className="flex justify-center items-center gap-3">
+                <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                  {testimonials[index].initials}
+                </div>
+                <div>
+                  <div className="font-semibold">
+                    {testimonials[index].name}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {testimonials[index].role}
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
+          </AnimatePresence>
 
-            <div className="flex justify-center gap-2 mt-8">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === active ? "w-8 bg-primary" : "w-2 bg-border hover:bg-muted-foreground"
-                  }`}
-                  aria-label={`Go to testimonial ${i + 1}`}
-                />
-              ))}
-            </div>
+          {/* ARROWS */}
+          <div className="flex justify-between mt-6">
+            <button onClick={() => paginate(-1)}>
+              <ChevronLeft />
+            </button>
+            <button onClick={() => paginate(1)}>
+              <ChevronRight />
+            </button>
+          </div>
+
+          {/* DOTS */}
+          <div className="flex justify-center gap-2 mt-6">
+            {testimonials.map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  width: i === index ? 24 : 8,
+                }}
+                className={`h-2 rounded-full ${
+                  i === index ? "bg-primary" : "bg-border"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>

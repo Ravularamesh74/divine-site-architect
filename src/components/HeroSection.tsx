@@ -36,7 +36,7 @@ export default function HeroSection() {
                 </a>
               </Button>
               <Button variant="heroOutline" size="lg" asChild>
-                <a href="tel:+12345678900">
+                <a href="tel:+916309503257">
                   <Phone className="mr-1" size={16} />
                   Free Consultation
                 </a>
