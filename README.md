@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Divine Site Architect
 
 TODO: Document your project here
