@@ -118,9 +118,9 @@ src/
 ├── assets/
 ├── types/
 └── main.tsx
-
-
 ---
+
+```
 
 ## 🚀 Getting Started
 
